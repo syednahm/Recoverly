@@ -40,24 +40,24 @@ export function MedicationCards({ medications }: MedicationCardsProps) {
           >
             <Card
               className={cn(
-                "border-2 transition-all hover:shadow-md",
+                "border-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer group",
                 med.taken
-                  ? "bg-slate-50/50 border-slate-200"
-                  : "bg-white border-blue-100 shadow-sm"
+                  ? "bg-slate-50/50 border-slate-200 hover:border-slate-300"
+                  : "bg-white border-blue-100 shadow-sm hover:border-blue-300 hover:shadow-blue-100/50"
               )}
             >
               <CardContent className="p-5">
                 <div className="flex items-start gap-4">
                   <div
                     className={cn(
-                      "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-colors",
-                      med.taken ? "bg-slate-100" : "bg-blue-50"
+                      "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300",
+                      med.taken ? "bg-slate-100 group-hover:bg-slate-200" : "bg-blue-50 group-hover:bg-blue-100 group-hover:scale-110"
                     )}
                   >
                     <Pill
                       className={cn(
-                        "w-6 h-6",
-                        med.taken ? "text-slate-400" : "text-blue-500"
+                        "w-6 h-6 transition-all duration-300",
+                        med.taken ? "text-slate-400" : "text-blue-500 group-hover:rotate-12"
                       )}
                       style={!med.taken ? { color: med.color } : undefined}
                     />
