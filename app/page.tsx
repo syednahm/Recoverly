@@ -8,7 +8,8 @@ import { TodayChecklist } from "@/components/dashboard/TodayChecklist";
 import { MedicationCards } from "@/components/dashboard/MedicationCards";
 import { MilestoneTimeline } from "@/components/dashboard/MilestoneTimeline";
 import { WarningBanner } from "@/components/dashboard/WarningBanner";
-import { MOCK_RECOVERY_PLAN, MOCK_PATIENT } from "@/lib/mock-data";
+import { RiskAssessmentCard } from "@/components/dashboard/RiskAssessmentCard";
+import { MOCK_RECOVERY_PLAN, MOCK_PATIENT, MOCK_RISK_ASSESSMENT } from "@/lib/mock-data";
 import { getConfidenceBreakdown } from "@/lib/confidence-score";
 
 export default function DashboardPage() {
@@ -64,7 +65,12 @@ export default function DashboardPage() {
         <MilestoneTimeline milestones={plan.milestones} />
       </div>
 
-      {/* Warning Signs — at the bottom, always visible */}
+      {/* AI-Powered Risk Assessment — personalized risk intelligence */}
+      <div className="mb-6">
+        <RiskAssessmentCard assessment={MOCK_RISK_ASSESSMENT} />
+      </div>
+
+      {/* Static Warning Signs — at the bottom, always visible */}
       <WarningBanner warnings={plan.warningSigns} />
     </DashboardShell>
   );
