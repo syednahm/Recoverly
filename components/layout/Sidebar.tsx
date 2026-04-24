@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { APP_NAME } from "@/lib/constants";
+import { APP_NAME, APP_TAGLINE } from "@/lib/constants";
 
 const NAV_ITEMS = [
   { title: "Dashboard", href: "/", icon: LayoutDashboard },
@@ -44,7 +44,9 @@ export function Sidebar() {
         </div>
         <div className="flex flex-col">
           <span className="text-sm font-bold tracking-tight text-white">{APP_NAME}</span>
-          <span className="text-[10px] text-slate-400 font-medium uppercase tracking-widest">Recovery</span>
+          <span className="text-[10px] font-medium leading-tight text-slate-400">
+            {APP_TAGLINE}
+          </span>
         </div>
       </div>
 

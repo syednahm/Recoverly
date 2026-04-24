@@ -1,6 +1,6 @@
-# RecoveryPath
+# Recoverly
 
-An AI-guided post-discharge recovery companion. RecoveryPath converts hospital discharge instructions into a structured recovery dashboard with medication schedules, daily tasks, symptom monitoring, and risk-aware guidance.
+An AI-guided post-discharge recovery companion. Recoverly converts hospital discharge instructions into a structured recovery dashboard with medication schedules, daily tasks, symptom monitoring, and risk-aware guidance.
 
 ---
 
@@ -18,7 +18,7 @@ An AI-guided post-discharge recovery companion. RecoveryPath converts hospital d
 
 ```bash
 git clone <repo-url>
-cd recovery-path
+cd recoverly
 npm install
 ```
 

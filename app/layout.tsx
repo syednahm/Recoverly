@@ -11,7 +11,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "RecoveryPath — AI-Guided Recovery Dashboard",
+  title: "Recoverly — AI-Guided Recovery Dashboard",
   description: "Your personalized post-discharge recovery companion powered by AI.",
 };
 

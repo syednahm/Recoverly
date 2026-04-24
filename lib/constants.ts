@@ -1,4 +1,5 @@
-export const APP_NAME = "RecoveryPath";
+export const APP_NAME = "Recoverly";
+export const APP_TAGLINE = "Intelligent at-home care";
 export const APP_DESCRIPTION = "AI-guided post-discharge recovery companion";
 
 export const NAV_ITEMS = [
