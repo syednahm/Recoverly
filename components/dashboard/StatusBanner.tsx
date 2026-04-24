@@ -60,8 +60,6 @@ const STATUS_CONFIG = {
 export function StatusBanner({ status, daysSince, totalDays }: StatusBannerProps) {
   const cfg = STATUS_CONFIG[status] ?? STATUS_CONFIG.on_track;
   const Icon = cfg.icon;
-  const daysLeft = totalDays - daysSince;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: -8 }}
@@ -84,11 +82,11 @@ export function StatusBanner({ status, daysSince, totalDays }: StatusBannerProps
 
       {/* Day counter */}
       <div className="hidden sm:flex flex-col items-center justify-center px-5 py-3 rounded-xl bg-white/70 border border-white shrink-0">
-        <p className={`text-3xl font-black leading-none ${cfg.textColor}`}>
+        <p className={`text-3xl font-black tabular-nums leading-none ${cfg.textColor}`}>
           Day {daysSince}
         </p>
-        <p className={`text-sm font-semibold mt-1 ${cfg.subColor}`}>
-          of {totalDays} · {daysLeft} left
+        <p className={`text-sm font-semibold mt-1 tabular-nums ${cfg.subColor}`}>
+          of {totalDays}
         </p>
       </div>
     </motion.div>
