@@ -13,6 +13,7 @@ import {
   Heart,
   ChevronRight,
   Sparkles,
+  Upload,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -22,6 +23,7 @@ import { APP_NAME, APP_TAGLINE } from "@/lib/constants";
 
 const NAV_ITEMS = [
   { title: "Dashboard", href: "/", icon: LayoutDashboard },
+  { title: "Upload Discharge", href: "/upload", icon: Upload },
   { title: "Recovery Plan", href: "/recovery-plan", icon: ClipboardList },
   { title: "Medications", href: "/medications", icon: Pill, badge: 2 },
   { title: "Symptoms", href: "/symptoms", icon: Activity },
