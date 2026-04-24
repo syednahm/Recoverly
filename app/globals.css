@@ -1,26 +1,100 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "../styles/tokens.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ─── Font ──────────────────────────────────── */
+  --font-sans:    var(--font-family-body);
+  --font-mono:    var(--font-family-mono);
+  --font-heading: var(--font-family-heading);
+
+  /* ─── Colors ────────────────────────────────── */
+  --color-background:              var(--color-page-bg);
+  --color-foreground:              var(--color-text-primary);
+  --color-card:                    var(--color-card-bg);
+  --color-card-foreground:         var(--color-text-primary);
+  --color-popover:                 var(--color-card-bg);
+  --color-popover-foreground:      var(--color-text-primary);
+  --color-primary:                 var(--color-brand);
+  --color-primary-foreground:      var(--color-text-inverse);
+  --color-secondary:               var(--color-neutral-100);
+  --color-secondary-foreground:    var(--color-text-primary);
+  --color-muted:                   var(--color-neutral-100);
+  --color-muted-foreground:        var(--color-text-secondary);
+  --color-accent:                  var(--color-success-subtle);
+  --color-accent-foreground:       var(--color-success);
+  --color-destructive:             var(--color-danger);
+  --color-border:                  var(--color-border-default);
+  --color-input:                   var(--color-border-default);
+  --color-ring:                    var(--color-brand);
+
+  --color-chart-1:                 var(--color-brand);
+  --color-chart-2:                 var(--color-success);
+  --color-chart-3:                 var(--color-warning);
+  --color-chart-4:                 var(--color-purple);
+  --color-chart-5:                 var(--color-danger);
+
+  --color-sidebar:                 var(--color-sidebar-bg);
+  --color-sidebar-foreground:      var(--color-sidebar-text);
+  --color-sidebar-primary:         var(--color-brand);
+  --color-sidebar-primary-foreground: var(--color-text-inverse);
+  --color-sidebar-accent:          oklch(0.22 0.04 250);
+  --color-sidebar-accent-foreground: var(--color-neutral-200);
+  --color-sidebar-border:          oklch(0.22 0.04 250);
+  --color-sidebar-ring:            var(--color-brand);
+
+  /* ─── Radius ────────────────────────────────── */
+  --radius-sm:  var(--radius-sm);
+  --radius-md:  var(--radius-md);
+  --radius-lg:  var(--radius-lg);
+  --radius-xl:  var(--radius-xl);
+  --radius-2xl: calc(var(--radius-xl) * 1.4);
+  --radius-3xl: calc(var(--radius-xl) * 1.8);
+  --radius-4xl: calc(var(--radius-xl) * 2.2);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* shadcn --radius compatibility shim */
+:root {
+  --radius: var(--radius-lg);
+  --background: var(--color-page-bg);
+  --foreground: var(--color-text-primary);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  html {
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: var(--letter-spacing-normal);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-text-primary);
+  }
+
+  p, span, li {
+    font-family: var(--font-family-body);
+  }
+
+  code, pre, kbd {
+    font-family: var(--font-family-mono);
+  }
 }

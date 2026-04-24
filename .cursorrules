@@ -1,0 +1,146 @@
+# RecoveryPath — Cursor Rules
+
+## Project Context
+
+RecoveryPath is an AI-guided post-discharge recovery companion.
+
+It converts hospital discharge instructions into a structured recovery plan with:
+- medication schedules
+- daily recovery tasks
+- healing expectations
+- symptom monitoring
+- risk-aware guidance
+
+This is NOT a chatbot.
+
+The product should feel like a recovery intelligence dashboard that helps patients safely recover at home.
+
+Main demo goal:
+A visually impressive healthcare dashboard with clear AI-driven recovery tracking.
+
+---
+
+## Required Stack
+
+Frontend:
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+
+UI:
+- ALWAYS use shadcn/ui
+- ALWAYS use Radix UI patterns/components
+- Use Lucide React for icons
+- Use Recharts for graphs
+- Use Framer Motion for subtle animations
+
+Backend:
+- Next.js API routes
+
+Database/Auth:
+- Supabase
+- Supabase Auth if needed
+
+AI:
+- OpenAI API for:
+  - discharge extraction
+  - symptom classification
+  - recovery guidance
+
+---
+
+## UI Rules (High Priority)
+
+UI must feel premium and demo-worthy.
+
+Design style:
+- calm clinical dashboard
+- soft blues / greens
+- card-based layout
+- strong spacing
+- minimal text
+- clear visual hierarchy
+
+Prioritize:
+- progress rings
+- confidence score
+- medication cards
+- recovery timeline
+- symptom graphs
+- warning banners
+- milestone cards
+- daily checklist
+
+Avoid:
+- chatbot-style UX
+- ugly tables
+- default styling
+- cluttered layouts
+
+Ask:
+“Would this impress judges in 5 seconds?”
+
+If no, improve UI.
+
+---
+
+## Engineering Rules
+
+VERY IMPORTANT:
+Any new feature must NOT break existing functionality.
+
+Always:
+- Make sure the UI won't be cluttered. Things should be abstracted to make it easier to navigate.
+- understand existing code first
+- extend before replacing
+- keep code modular
+- use reusable components
+- maintain strong TypeScript types
+- use styles defined in styles/
+- prefer small focused components
+
+Avoid:
+- unnecessary rewrites
+- duplicate logic
+- giant component files
+
+---
+
+## AI Rules
+
+AI responses should be structured JSON, not paragraphs.
+
+Prefer:
+{
+  medications: [],
+  dailyPlan: [],
+  warningSigns: [],
+  status: ""
+}
+
+Avoid:
+large unstructured text responses
+
+The product should clearly show AI-powered decisions.
+
+---
+
+## Priority Order
+
+Build in this order:
+1. Dashboard UI
+2. Recovery timeline
+3. Recovery confidence score
+4. Symptom check-in system
+5. Discharge upload + AI extraction
+6. Medication schedule cards
+7. Risk warning system
+8. Milestone tracking
+
+Stretch:
+- OCR improvements
+- Wound image upload
+- Vision analysis
+
+UI wow matters as much as AI.

@@ -1,0 +1,113 @@
+/*
+ * RecoveryPath Design Tokens
+ * Single source of truth for typography, colors, radius, and shadows.
+ * Reference these variables — never hardcode values in components.
+ */
+
+:root {
+  /* ─── Typography ──────────────────────────────────────────── */
+  /* --font-roboto is injected by next/font on <html> in layout.tsx */
+  --font-family-body:    var(--font-roboto), "Roboto", system-ui, sans-serif;
+  --font-family-heading: var(--font-roboto), "Roboto", system-ui, sans-serif;
+  --font-family-mono:    ui-monospace, "Roboto Mono", monospace;
+
+  --font-size-xs:   0.75rem;    /* 12px */
+  --font-size-sm:   0.875rem;   /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg:   1.125rem;   /* 18px */
+  --font-size-xl:   1.25rem;    /* 20px */
+  --font-size-2xl:  1.5rem;     /* 24px */
+  --font-size-3xl:  1.875rem;   /* 30px */
+
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    900;
+
+  --line-height-tight:  1.25;
+  --line-height-normal: 1.5;
+  --line-height-loose:  1.75;
+
+  --letter-spacing-tight:  -0.015em;
+  --letter-spacing-normal:  0;
+  --letter-spacing-wide:    0.025em;
+  --letter-spacing-widest:  0.1em;
+
+  /* ─── Brand / Primary ─────────────────────────────────────── */
+  --color-brand:          oklch(0.56 0.19 235);   /* sky-600 */
+  --color-brand-light:    oklch(0.70 0.15 225);   /* sky-400 */
+  --color-brand-dark:     oklch(0.43 0.18 240);   /* sky-800 */
+  --color-brand-subtle:   oklch(0.96 0.03 230);   /* sky-50 */
+  --color-brand-border:   oklch(0.88 0.07 230);   /* sky-200 */
+
+  /* ─── Health Semantic Colors ──────────────────────────────── */
+  --color-success:        oklch(0.60 0.17 160);   /* emerald-600 */
+  --color-success-light:  oklch(0.74 0.15 160);   /* emerald-400 */
+  --color-success-subtle: oklch(0.96 0.04 160);   /* emerald-50 */
+  --color-success-border: oklch(0.87 0.09 160);   /* emerald-200 */
+
+  --color-warning:        oklch(0.68 0.17  75);   /* amber-600 */
+  --color-warning-light:  oklch(0.82 0.15  80);   /* amber-400 */
+  --color-warning-subtle: oklch(0.97 0.04  80);   /* amber-50 */
+  --color-warning-border: oklch(0.90 0.10  78);   /* amber-200 */
+
+  --color-danger:         oklch(0.58 0.22  25);   /* red-600 */
+  --color-danger-light:   oklch(0.70 0.20  25);   /* red-400 */
+  --color-danger-subtle:  oklch(0.97 0.03  25);   /* red-50 */
+  --color-danger-border:  oklch(0.89 0.09  25);   /* red-200 */
+
+  --color-info:           oklch(0.56 0.19 235);   /* same as brand */
+  --color-purple:         oklch(0.55 0.22 292);   /* violet-600 */
+  --color-purple-subtle:  oklch(0.96 0.04 290);   /* violet-50 */
+
+  /* ─── Neutrals (Slate scale) ──────────────────────────────── */
+  --color-neutral-50:  oklch(0.984 0.003 248);
+  --color-neutral-100: oklch(0.968 0.007 248);
+  --color-neutral-200: oklch(0.929 0.013 255);
+  --color-neutral-300: oklch(0.869 0.022 252);
+  --color-neutral-400: oklch(0.704 0.040 258);
+  --color-neutral-500: oklch(0.554 0.046 257);
+  --color-neutral-600: oklch(0.446 0.043 257);
+  --color-neutral-700: oklch(0.372 0.044 257);
+  --color-neutral-800: oklch(0.279 0.041 260);
+  --color-neutral-900: oklch(0.208 0.042 265);
+  --color-neutral-950: oklch(0.129 0.042 264);
+
+  /* ─── Surface / App Layout ────────────────────────────────── */
+  --color-page-bg:        var(--color-neutral-50);
+  --color-card-bg:        oklch(1 0 0);
+  --color-sidebar-bg:     var(--color-neutral-950);
+  --color-sidebar-text:   var(--color-neutral-100);
+  --color-topnav-bg:      oklch(1 0 0 / 80%);     /* semi-transparent white */
+
+  /* ─── Text ────────────────────────────────────────────────── */
+  --color-text-primary:   var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-muted:     var(--color-neutral-400);
+  --color-text-disabled:  var(--color-neutral-300);
+  --color-text-inverse:   oklch(1 0 0);
+
+  /* ─── Border & Divider ────────────────────────────────────── */
+  --color-border-subtle:  var(--color-neutral-100);
+  --color-border-default: var(--color-neutral-200);
+  --color-border-strong:  var(--color-neutral-300);
+
+  /* ─── Radius ──────────────────────────────────────────────── */
+  --radius-sm:  0.375rem;   /* 6px  — tight elements */
+  --radius-md:  0.625rem;   /* 10px — inputs, badges */
+  --radius-lg:  0.875rem;   /* 14px — cards */
+  --radius-xl:  1.25rem;    /* 20px — hero cards */
+  --radius-full: 9999px;    /* pills */
+
+  /* ─── Shadow ──────────────────────────────────────────────── */
+  --shadow-xs:  0 1px 2px oklch(0 0 0 / 4%);
+  --shadow-sm:  0 1px 4px oklch(0 0 0 / 6%), 0 1px 2px oklch(0 0 0 / 4%);
+  --shadow-md:  0 4px 12px oklch(0 0 0 / 8%), 0 1px 4px oklch(0 0 0 / 4%);
+  --shadow-lg:  0 8px 24px oklch(0 0 0 / 10%), 0 2px 8px oklch(0 0 0 / 6%);
+
+  /* ─── Transitions ─────────────────────────────────────────── */
+  --transition-fast:   150ms ease;
+  --transition-base:   200ms ease;
+  --transition-slow:   350ms ease;
+}
