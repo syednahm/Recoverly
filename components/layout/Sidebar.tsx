@@ -12,6 +12,7 @@ import {
   Settings,
   Heart,
   ChevronRight,
+  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -26,6 +27,10 @@ const NAV_ITEMS = [
   { title: "Symptoms", href: "/symptoms", icon: Activity },
   { title: "Milestones", href: "/milestones", icon: Trophy },
   { title: "Documents", href: "/documents", icon: FileText },
+];
+
+const DEMO_ITEMS = [
+  { title: "Score Demo", href: "/demo", icon: Sparkles },
 ];
 
 const BOTTOM_ITEMS = [
@@ -99,6 +104,41 @@ export function Sidebar() {
                 )}
                 {isActive && (
                   <ChevronRight className="w-3 h-3 text-sky-400/60 shrink-0" />
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <Separator className="my-4 bg-slate-800" />
+
+        <nav className="space-y-0.5">
+          <p className="px-3 mb-2 text-[10px] font-semibold uppercase tracking-widest text-slate-500">
+            Demo
+          </p>
+          {DEMO_ITEMS.map((item) => {
+            const isActive = pathname === item.href;
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 group",
+                  isActive
+                    ? "bg-purple-500/15 text-purple-300 shadow-sm"
+                    : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+                )}
+              >
+                <Icon
+                  className={cn(
+                    "w-4 h-4 shrink-0 transition-colors",
+                    isActive ? "text-purple-400" : "text-slate-500 group-hover:text-slate-300"
+                  )}
+                />
+                <span className="flex-1">{item.title}</span>
+                {isActive && (
+                  <ChevronRight className="w-3 h-3 text-purple-400/60 shrink-0" />
                 )}
               </Link>
             );

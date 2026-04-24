@@ -1,15 +1,20 @@
+"use client";
+
 import { DashboardShell } from "@/components/layout/DashboardShell";
 import { StatusBanner } from "@/components/dashboard/StatusBanner";
-import { RecoveryProgressRing, RecoveryConfidenceCard } from "@/components/dashboard/RecoveryScoreCard";
+import { RecoveryProgressRing } from "@/components/dashboard/RecoveryScoreCard";
+import { ConfidenceScoreCard } from "@/components/dashboard/ConfidenceScoreCard";
 import { TodayChecklist } from "@/components/dashboard/TodayChecklist";
 import { MedicationCards } from "@/components/dashboard/MedicationCards";
 import { MilestoneTimeline } from "@/components/dashboard/MilestoneTimeline";
 import { WarningBanner } from "@/components/dashboard/WarningBanner";
 import { MOCK_RECOVERY_PLAN, MOCK_PATIENT } from "@/lib/mock-data";
+import { getConfidenceBreakdown } from "@/lib/confidence-score";
 
 export default function DashboardPage() {
   const plan = MOCK_RECOVERY_PLAN;
   const patient = MOCK_PATIENT;
+  const confidenceBreakdown = getConfidenceBreakdown(plan);
 
   return (
     <DashboardShell>
@@ -37,15 +42,12 @@ export default function DashboardPage() {
       </div>
 
       {/* Recovery Ring + Confidence Score — side by side */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <RecoveryProgressRing
           daysSince={plan.daysSinceDischarge}
           totalDays={plan.totalRecoveryDays}
         />
-        <RecoveryConfidenceCard
-          score={plan.confidenceScore}
-          aiInsight={plan.aiInsights[0]}
-        />
+        <ConfidenceScoreCard breakdown={confidenceBreakdown} />
       </div>
 
       {/* Main content — 2 columns on large screens */}

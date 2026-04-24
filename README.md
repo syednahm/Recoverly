@@ -60,11 +60,28 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ---
 
+## Features
+
+- **Dashboard**: Real-time recovery status with confidence scores and progress tracking
+- **Recovery Confidence Score**: AI-powered score (0-100) that dynamically updates based on symptom severity, medication adherence, task completion, and warning signs ([docs](./docs/CONFIDENCE_SCORE.md))
+- **Recovery Plan**: Structured timeline with daily tasks and milestones
+- **Medication Management**: Smart medication cards with schedules and reminders
+- **Symptom Check-In**: AI-guided symptom tracking with intelligent assessment ([docs](./docs/SYMPTOM_CHECKIN.md))
+- **Risk Monitoring**: Warning banners for critical symptoms requiring attention
+- **Milestone Tracking**: Visual recovery milestones with achievement dates
+
+---
+
 ## Project Structure
 
 ```
 app/          # Next.js App Router pages and API routes
 components/   # Reusable UI components
+  dashboard/  # Dashboard-specific components
+  layout/     # Layout components (Sidebar, TopNav, etc.)
+  symptoms/   # Symptom check-in components
+  ui/         # shadcn/ui base components
+docs/         # Feature documentation
 hooks/        # Custom React hooks
 lib/          # Utility helpers and Supabase client
 services/     # AI extraction and data services

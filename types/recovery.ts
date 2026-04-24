@@ -20,6 +20,7 @@ export interface Medication {
   dosage: string;
   frequency: MedicationFrequency;
   instructions: string;
+  purpose: string;
   startDate: string;
   endDate?: string;
   taken: boolean;
