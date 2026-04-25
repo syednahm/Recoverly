@@ -1,4 +1,5 @@
 export * from "./recovery";
+export * from "./risk-assessment";
 
 export interface ApiResponse<T> {
   data: T | null;

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { DashboardShell } from "@/components/layout/DashboardShell";
 import { DayCard } from "@/components/recovery-plan/DayCard";
 import { PhaseBar } from "@/components/recovery-plan/PhaseBar";
@@ -46,7 +47,12 @@ export default function RecoveryPlanPage() {
 
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1 text-xs text-slate-400 mt-3 mb-4">
-          <span>Dashboard</span>
+          <Link
+            href="/"
+            className="hover:text-slate-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 rounded-sm"
+          >
+            Dashboard
+          </Link>
           <ChevronRight className="w-3 h-3" />
           <span className="text-slate-600 font-medium">Recovery Plan</span>
         </nav>

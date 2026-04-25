@@ -60,35 +60,47 @@ const STATUS_CONFIG = {
 export function StatusBanner({ status, daysSince, totalDays }: StatusBannerProps) {
   const cfg = STATUS_CONFIG[status] ?? STATUS_CONFIG.on_track;
   const Icon = cfg.icon;
-  const daysLeft = totalDays - daysSince;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`flex items-center gap-5 p-5 rounded-2xl border-2 ${cfg.bg}`}
+      className={`flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 p-4 sm:p-5 rounded-2xl border-2 ${cfg.bg}`}
     >
-      {/* Icon */}
-      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${cfg.iconBg}`}>
-        <Icon className={`w-7 h-7 ${cfg.iconColor}`} />
-      </div>
+      <div className="flex items-center gap-4 flex-1 w-full sm:w-auto">
+        {/* Icon */}
+        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 ${cfg.iconBg}`}>
+          <Icon className={`w-6 h-6 sm:w-7 sm:h-7 ${cfg.iconColor}`} />
+        </div>
 
-      {/* Text */}
-      <div className="flex-1">
-        <p className={`text-2xl font-black leading-tight ${cfg.textColor}`}>
-          {cfg.headline}
-        </p>
-        <p className={`text-base mt-1 ${cfg.subColor}`}>{cfg.sub}</p>
+        {/* Text */}
+        <div className="flex-1 min-w-0">
+          <p className={`text-xl sm:text-2xl font-black leading-tight ${cfg.textColor}`}>
+            {cfg.headline}
+          </p>
+          <p className={`text-sm sm:text-base mt-1 ${cfg.subColor}`}>{cfg.sub}</p>
+        </div>
       </div>
 
       {/* Day counter */}
+      <div className="flex sm:hidden w-full justify-center">
+        <div className="flex items-center gap-4 px-4 py-2 rounded-xl bg-white/70 border border-white w-full justify-center">
+          <div className="text-center">
+            <p className={`text-2xl font-black tabular-nums leading-none ${cfg.textColor}`}>
+              Day {daysSince}
+            </p>
+            <p className={`text-xs font-semibold mt-0.5 tabular-nums ${cfg.subColor}`}>
+              of {totalDays}
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="hidden sm:flex flex-col items-center justify-center px-5 py-3 rounded-xl bg-white/70 border border-white shrink-0">
-        <p className={`text-3xl font-black leading-none ${cfg.textColor}`}>
+        <p className={`text-3xl font-black tabular-nums leading-none ${cfg.textColor}`}>
           Day {daysSince}
         </p>
-        <p className={`text-sm font-semibold mt-1 ${cfg.subColor}`}>
-          of {totalDays} · {daysLeft} left
+        <p className={`text-sm font-semibold mt-1 tabular-nums ${cfg.subColor}`}>
+          of {totalDays}
         </p>
       </div>
     </motion.div>

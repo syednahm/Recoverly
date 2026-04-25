@@ -53,16 +53,17 @@ export function MilestoneTimeline({ milestones }: MilestoneTimelineProps) {
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-start gap-4 relative"
+                  whileHover={{ scale: 1.02, x: 4 }}
+                  className="flex items-start gap-4 relative cursor-pointer group rounded-xl p-2 -mx-2 transition-colors hover:bg-slate-50"
                 >
                   {/* Node */}
                   <div className={cn(
-                    "w-12 h-12 rounded-full flex items-center justify-center shrink-0 z-10 border-2 transition-all",
+                    "w-12 h-12 rounded-full flex items-center justify-center shrink-0 z-10 border-2 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg",
                     ms.achieved
-                      ? "bg-emerald-500 border-emerald-500 shadow-md shadow-emerald-100"
+                      ? "bg-emerald-500 border-emerald-500 shadow-md shadow-emerald-100 group-hover:shadow-emerald-200"
                       : isNext
-                        ? "bg-sky-50 border-sky-300"
-                        : "bg-white border-slate-200"
+                        ? "bg-sky-50 border-sky-300 group-hover:bg-sky-100 group-hover:border-sky-400"
+                        : "bg-white border-slate-200 group-hover:border-slate-300"
                   )}>
                     {ms.achieved ? (
                       <CheckCircle2 className="w-5 h-5 text-white" />

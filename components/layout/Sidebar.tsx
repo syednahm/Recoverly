@@ -13,6 +13,7 @@ import {
   Heart,
   ChevronRight,
   Sparkles,
+  Upload,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -22,6 +23,7 @@ import { APP_NAME, APP_TAGLINE } from "@/lib/constants";
 
 const NAV_ITEMS = [
   { title: "Dashboard", href: "/", icon: LayoutDashboard },
+  { title: "Upload Discharge", href: "/upload", icon: Upload },
   { title: "Recovery Plan", href: "/recovery-plan", icon: ClipboardList },
   { title: "Medications", href: "/medications", icon: Pill, badge: 2 },
   { title: "Symptoms", href: "/symptoms", icon: Activity },
@@ -84,26 +86,32 @@ export function Sidebar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 group",
+                  "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group relative overflow-hidden",
                   isActive
                     ? "bg-sky-500/15 text-sky-300 shadow-sm"
-                    : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+                    : "text-slate-400 hover:text-slate-100 hover:bg-slate-800 hover:scale-105 active:scale-100"
                 )}
               >
+                {isActive && (
+                  <span className="absolute left-0 top-0 bottom-0 w-1 bg-sky-400 rounded-r-full" />
+                )}
+
                 <Icon
                   className={cn(
-                    "w-4 h-4 shrink-0 transition-colors",
-                    isActive ? "text-sky-400" : "text-slate-500 group-hover:text-slate-300"
+                    "w-4 h-4 shrink-0 transition-all duration-200",
+                    isActive ? "text-sky-400 scale-110" : "text-slate-500 group-hover:text-slate-300 group-hover:scale-110"
                   )}
                 />
-                <span className="flex-1">{item.title}</span>
+                <span className="flex-1 relative">
+                  {item.title}
+                </span>
                 {item.badge && (
-                  <Badge className="h-4 min-w-4 px-1 text-[10px] bg-sky-500 hover:bg-sky-500 text-white border-0 rounded-full">
+                  <Badge className="h-4 min-w-4 px-1 text-[10px] bg-sky-500 hover:bg-sky-500 text-white border-0 rounded-full animate-pulse">
                     {item.badge}
                   </Badge>
                 )}
                 {isActive && (
-                  <ChevronRight className="w-3 h-3 text-sky-400/60 shrink-0" />
+                  <ChevronRight className="w-3 h-3 text-sky-400/60 shrink-0 animate-pulse" />
                 )}
               </Link>
             );
@@ -172,15 +180,15 @@ export function Sidebar() {
 
       {/* Patient Card */}
       <div className="p-4 border-t border-slate-800">
-        <div className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-xs font-bold text-white shrink-0">
+        <div className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-slate-800 transition-all duration-200 cursor-pointer group hover:scale-105 active:scale-100">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-200">
             MJ
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-slate-200 truncate">Marcus Johnson</p>
-            <p className="text-[10px] text-slate-500 truncate">Knee Replacement · Day 7</p>
+            <p className="text-xs font-semibold text-slate-200 truncate group-hover:text-white transition-colors">Marcus Johnson</p>
+            <p className="text-[10px] text-slate-500 truncate group-hover:text-slate-400 transition-colors">Knee Replacement · Day 7</p>
           </div>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-600 shrink-0" />
+          <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-slate-400 shrink-0 transition-all duration-200 group-hover:translate-x-0.5" />
         </div>
       </div>
     </aside>

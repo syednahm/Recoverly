@@ -17,13 +17,13 @@ export function RecoveryProgressRing({ daysSince, totalDays }: RecoveryProgressR
 
   return (
     <Card className="border-0 shadow-sm bg-white">
-      <CardContent className="p-6 flex flex-col items-center text-center">
-        <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4">
+      <CardContent className="p-4 sm:p-6 flex flex-col items-center text-center">
+        <p className="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-widest mb-3 sm:mb-4">
           Recovery Progress
         </p>
 
         <div className="relative">
-          <svg width="140" height="140" viewBox="0 0 140 140" className="-rotate-90">
+          <svg width="120" height="120" viewBox="0 0 140 140" className="-rotate-90 sm:w-[140px] sm:h-[140px]">
             <circle
               cx="70" cy="70" r={radius}
               fill="none"
@@ -55,11 +55,11 @@ export function RecoveryProgressRing({ daysSince, totalDays }: RecoveryProgressR
           </div>
         </div>
 
-        <div className="mt-4 px-4 py-3 rounded-xl bg-blue-50 w-full">
-          <p className="text-2xl font-black text-blue-700">
+        <div className="mt-3 sm:mt-4 px-3 sm:px-4 py-2 sm:py-3 rounded-xl bg-blue-50 w-full">
+          <p className="text-xl sm:text-2xl font-black text-blue-700">
             Day {daysSince} of {totalDays}
           </p>
-          <p className="text-sm text-blue-500 mt-0.5 font-medium">
+          <p className="text-xs sm:text-sm text-blue-500 mt-0.5 font-medium">
             {totalDays - daysSince} days remaining
           </p>
         </div>

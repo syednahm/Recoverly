@@ -1,4 +1,6 @@
 import type { RecoveryPlan, Patient } from "@/types";
+import type { RiskAssessment } from "@/types/risk-assessment";
+import { assessRisk } from "./risk-assessment";
 
 export const MOCK_PATIENT: Patient = {
   id: "patient-001",
@@ -217,3 +219,17 @@ export const MOCK_RECOVERY_PLAN: RecoveryPlan = {
     "Next follow-up with Dr. Chen recommended on April 28.",
   ],
 };
+
+// Generate mock risk assessment based on recovery plan data
+export const MOCK_RISK_ASSESSMENT: RiskAssessment = assessRisk({
+  patientId: MOCK_PATIENT.id,
+  currentPainLevel: 3,
+  recentSymptoms: ["swelling", "fatigue"],
+  daysSinceDischarge: MOCK_RECOVERY_PLAN.daysSinceDischarge,
+  medicationAdherence: 89,
+  recentSymptomHistory: MOCK_RECOVERY_PLAN.symptomHistory.map((s) => ({
+    date: s.date,
+    pain: s.pain,
+  })),
+  condition: MOCK_PATIENT.condition,
+});

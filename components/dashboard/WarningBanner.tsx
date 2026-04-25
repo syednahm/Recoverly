@@ -18,9 +18,13 @@ export function WarningBanner({ warnings }: WarningBannerProps) {
   return (
     <div className="space-y-2">
       {criticals.length > 0 && (
-        <div className="rounded-xl border border-red-200 bg-red-50 overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="rounded-xl border border-red-200 bg-red-50 overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+        >
           <button
-            className="w-full flex items-center gap-3 px-4 py-3 text-left"
+            className="w-full flex items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-red-100"
             onClick={() => setExpanded(!expanded)}
           >
             <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
@@ -61,15 +65,18 @@ export function WarningBanner({ warnings }: WarningBannerProps) {
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
+        </motion.div>
       )}
 
-      {cautions.map((w) => (
-        <div
+      {cautions.map((w, i) => (
+        <motion.div
           key={w.id}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: i * 0.1 }}
           className={cn(
-            "flex items-start gap-3 px-4 py-3 rounded-xl border",
-            "border-amber-200 bg-amber-50"
+            "flex items-start gap-3 px-4 py-3 rounded-xl border cursor-pointer hover:shadow-md transition-shadow duration-300",
+            "border-amber-200 bg-amber-50 hover:bg-amber-100"
           )}
         >
           <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
@@ -78,7 +85,7 @@ export function WarningBanner({ warnings }: WarningBannerProps) {
             <p className="text-xs text-amber-600 mt-0.5">{w.description}</p>
             <p className="text-xs font-semibold text-amber-700 mt-1">{w.actionRequired}</p>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

@@ -35,7 +35,7 @@ export function TopNav({ onMenuClick }: TopNavProps) {
   };
 
   return (
-    <header className="h-16 border-b border-slate-100 bg-white/80 backdrop-blur-sm sticky top-0 z-30 flex items-center px-4 lg:px-6 gap-4">
+    <header className="h-16 border-b border-slate-100 bg-white/90 backdrop-blur-md sticky top-0 z-30 flex items-center px-4 lg:px-6 gap-4 shadow-sm">
       {/* Mobile Logo + Menu */}
       <div className="flex items-center gap-3 lg:hidden">
         <Button
@@ -84,9 +84,9 @@ export function TopNav({ onMenuClick }: TopNavProps) {
 
       {/* Notifications */}
       <DropdownMenu>
-        <DropdownMenuTrigger className="relative inline-flex items-center justify-center w-9 h-9 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors">
+        <DropdownMenuTrigger className="relative inline-flex items-center justify-center w-9 h-9 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-all duration-200 hover:scale-110 active:scale-100">
           <Bell className="w-4 h-4" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white animate-pulse" />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-80">
           <DropdownMenuLabel className="flex items-center justify-between">
@@ -113,12 +113,12 @@ export function TopNav({ onMenuClick }: TopNavProps) {
 
       {/* User menu */}
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center gap-2 h-9 px-2 rounded-md text-slate-600 hover:bg-slate-100 transition-colors">
-          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-[11px] font-bold text-white">
+        <DropdownMenuTrigger className="flex items-center gap-2 h-9 px-2 rounded-md text-slate-600 hover:bg-slate-100 transition-all duration-200 hover:scale-105 active:scale-100">
+          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-[11px] font-bold text-white shadow-md">
             MJ
           </div>
           <span className="hidden md:block text-sm font-medium">Marcus J.</span>
-          <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+          <ChevronDown className="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 group-hover:translate-y-0.5" />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48">
   <DropdownMenuGroup>
