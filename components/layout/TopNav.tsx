@@ -31,7 +31,7 @@ export function TopNav({ onMenuClick }: TopNavProps) {
   };
 
   const handleSettings = () => {
-    router.push("/Settings");
+    router.push("/settings");
   };
 
   return (

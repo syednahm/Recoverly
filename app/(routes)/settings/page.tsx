@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -15,7 +16,17 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { CheckCircle2, AlertCircle, LogOut, Save, Trash2, LogIn } from 'lucide-react';
+import Link from 'next/link';
+import {
+  CheckCircle2,
+  AlertCircle,
+  LogOut,
+  Save,
+  Trash2,
+  LogIn,
+  ArrowLeft,
+  LayoutDashboard,
+} from 'lucide-react';
 
 const supabase = createClient();
 
@@ -137,6 +148,25 @@ export default function SettingsPage() {
   return (
     <div className="min-h-screen bg-slate-50 py-10 px-4">
       <div className="max-w-2xl mx-auto space-y-6">
+
+        <Link
+          href="/"
+          className={cn(
+            buttonVariants({ variant: 'outline', size: 'default' }),
+            'w-full sm:w-auto min-w-[220px] justify-start gap-3 border-sky-200 bg-white px-3 py-2 h-auto min-h-10',
+            'text-sm font-semibold text-slate-900 shadow-sm',
+            'hover:bg-sky-50 hover:border-sky-300 hover:text-sky-950',
+            'focus-visible:ring-2 focus-visible:ring-sky-400/40'
+          )}
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-sky-700">
+            <LayoutDashboard className="size-[18px]" aria-hidden />
+          </span>
+          <span className="flex items-center gap-2">
+            <ArrowLeft className="size-4 shrink-0 text-sky-600" aria-hidden />
+            Back to dashboard
+          </span>
+        </Link>
 
         {/* Header */}
         <div>
