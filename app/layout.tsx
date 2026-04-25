@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={roboto.variable}>
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         <TooltipProvider>
           {children}
         </TooltipProvider>

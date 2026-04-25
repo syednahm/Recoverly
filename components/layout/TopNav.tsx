@@ -6,18 +6,34 @@ import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,   
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { APP_NAME } from "@/lib/constants";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client"; // adjust path if needed
+
+const supabase = createClient();
 
 interface TopNavProps {
   onMenuClick?: () => void;
 }
 
 export function TopNav({ onMenuClick }: TopNavProps) {
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    router.push("/"); // redirect to home or login page after sign out
+  };
+
+  const handleSettings = () => {
+    router.push("/Settings");
+  };
+
   return (
     <header className="h-16 border-b border-slate-100 bg-white/80 backdrop-blur-sm sticky top-0 z-30 flex items-center px-4 lg:px-6 gap-4">
       {/* Mobile Logo + Menu */}
@@ -105,17 +121,23 @@ export function TopNav({ onMenuClick }: TopNavProps) {
           <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48">
-          <DropdownMenuLabel className="font-normal">
-            <p className="font-semibold text-sm">Marcus Johnson</p>
-            <p className="text-xs text-slate-500">Day 7 of Recovery</p>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Care Team</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem className="text-red-600">Sign out</DropdownMenuItem>
-        </DropdownMenuContent>
+  <DropdownMenuGroup>
+    <DropdownMenuLabel className="font-normal">
+      <p className="font-semibold text-sm">Marcus Johnson</p>
+      <p className="text-xs text-slate-500">Day 7 of Recovery</p>
+    </DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>Profile</DropdownMenuItem>
+    <DropdownMenuItem>Care Team</DropdownMenuItem>
+    <DropdownMenuItem onClick={handleSettings} className="cursor-pointer">
+      Settings
+    </DropdownMenuItem>
+  </DropdownMenuGroup>
+  <DropdownMenuSeparator />
+  <DropdownMenuItem onClick={handleSignOut} className="text-red-600 cursor-pointer">
+    Sign out
+  </DropdownMenuItem>
+</DropdownMenuContent>
       </DropdownMenu>
     </header>
   );
